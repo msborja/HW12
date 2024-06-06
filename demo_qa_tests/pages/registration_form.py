@@ -1,7 +1,5 @@
-from selene import browser, have, be
-
 from pathlib import Path
-from selene import browser, have, command
+from selene import browser, have, be
 import demo_qa_tests
 
 
@@ -16,10 +14,10 @@ class RegistrationPage:
             "document.querySelector('.body-height').style.transform='scale(.40)'")
 
     def fill_first_name(self, value):
-        browser.element('#firstName').should(be.blank).type(value)
+        browser.element('#firstName').type(value)
 
     def fill_last_name(self, value):
-        browser.element('#lastName').should(be.blank).type(value)
+        browser.element('#lastName').type(value)
 
     def fill_email(self, value):
         browser.element('#userEmail').type(value)
@@ -28,7 +26,7 @@ class RegistrationPage:
         browser.element('[for="gender-radio-1"]').click()
 
     def fill_mobile_phone(self, value):
-        browser.element('#userNumber').should(be.blank).type(value)
+        browser.element('#userNumber').type(value)
 
     def fill_birthday(self, year, month, day):
         browser.element('#dateOfBirthInput').click()
@@ -53,10 +51,8 @@ class RegistrationPage:
             str(Path(demo_qa_tests.__file__).parent.parent.joinpath(f'resources/{file}'))
         )
 
-        return self
-
     def fill_address(self, value):
-        browser.element('#currentAddress').should(be.blank).type(value)
+        browser.element('#currentAddress').type(value)
 
     def pick_state_and_city(self):
         browser.element('#state').click().element('#react-select-3-option-3').click()
@@ -65,17 +61,17 @@ class RegistrationPage:
     def click_submit(self):
         browser.element('#submit').click()
 
-    def assert_submit_user_info(self, first_and_last_name, email, gender, phone, birthday, subject, hobbies, picture, address, state_and_city):
+    def assert_submit_user_info(self, first_and_last_name, email, gender, phone, birthday, subject, hobbies, picture,
+                                address, state_and_city):
         browser.element('.modal-content').element('table').all('tr').all('td').even.should(
             have.exact_texts(
                 first_and_last_name,
-                        email,
-                        gender,
-                        phone,
-                        birthday,
-                        subject,
-                        hobbies,
-                        picture,
-                        address,
-                        state_and_city))
-
+                email,
+                gender,
+                phone,
+                birthday,
+                subject,
+                hobbies,
+                picture,
+                address,
+                state_and_city))
