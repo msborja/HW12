@@ -1,4 +1,4 @@
-from demo_qa_tests.pages.registration_form import RegistrationPage
+from demo_qa_tests.pages.registration_page import RegistrationPage
 
 def test_student_registration_form():
     registration_page = RegistrationPage()

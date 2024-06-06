@@ -6,7 +6,6 @@ import demo_qa_tests
 class RegistrationPage:
     def __init__(self):
         self.subject = browser.element('#subjectsInput')
-        pass
 
     def open(self):
         browser.open('/automation-practice-form')

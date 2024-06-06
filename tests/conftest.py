@@ -10,4 +10,3 @@ def browser_settings():
     browser.config.timeout = 10.0
     yield
     browser.quit()
-
