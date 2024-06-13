@@ -1,5 +1,5 @@
 import pytest
-
+from utils import attach
 from selene import browser
 
 from selenium import webdriver
@@ -27,7 +27,7 @@ def browser_settings():
         "browserVersion": "100.0",
         "selenoid:options": {
             "enableVNC": True,
-            "enableVideo": False
+            "enableVideo": True
         }
     }
 
@@ -43,4 +43,10 @@ def browser_settings():
     browser.config.driver = driver
 
     yield
+
+    attach.add_screenshot(browser)
+    attach.add_html(browser)
+    attach.add_logs(browser)
+    attach.add_video(browser)
+
     browser.quit()
