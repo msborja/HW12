@@ -1,6 +1,5 @@
 import allure
 from allure_commons.types import AttachmentType
-from dotenv import load_dotenv
 
 
 # Скриншоты
