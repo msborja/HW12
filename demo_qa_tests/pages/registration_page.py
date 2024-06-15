@@ -1,11 +1,12 @@
 from pathlib import Path
-from selene import browser, have, be
+from selene import browser, have, command
 import demo_qa_tests
 
 
 class RegistrationPage:
     def __init__(self):
         self.subject = browser.element('#subjectsInput')
+        self.address = browser.element('#currentAddress')
 
     def open(self):
         browser.open('/automation-practice-form')
@@ -51,7 +52,8 @@ class RegistrationPage:
         )
 
     def fill_address(self, value):
-        browser.element('#currentAddress').type(value)
+        self.address.perform(command.js.scroll_into_view).click()
+        self.address.type(value)
 
     def pick_state_and_city(self):
         browser.element('#state').click().element('#react-select-3-option-3').click()
