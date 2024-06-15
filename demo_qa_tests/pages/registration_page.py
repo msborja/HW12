@@ -7,6 +7,7 @@ class RegistrationPage:
     def __init__(self):
         self.subject = browser.element('#subjectsInput')
         self.address = browser.element('#currentAddress')
+        self.birthday = browser.element('#dateOfBirthInput')
 
     def open(self):
         browser.open('/automation-practice-form')
@@ -29,7 +30,8 @@ class RegistrationPage:
         browser.element('#userNumber').type(value)
 
     def fill_birthday(self, year, month, day):
-        browser.element('#dateOfBirthInput').click()
+        self.birthday.perform(command.js.scroll_into_view).click()
+        self.birthday.click()
         browser.element('.react-datepicker__header__dropdown.react-datepicker__header__dropdown--select').click()
         browser.element('.react-datepicker__month-select').click()
         browser.element(f'[value="{month}"]').click()
